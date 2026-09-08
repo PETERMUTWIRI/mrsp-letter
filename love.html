@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Queen, MrsP</title>
+    <title>For MrsP, With All My Love</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: linear-gradient(135deg, #0d0d1a 0%, #1a0a1a 50%, #0f0f23 100%);
+            background: radial-gradient(circle at 12% 10%, rgba(255,255,255,.7), transparent 28%), radial-gradient(circle at 90% 60%, rgba(255,183,201,.45), transparent 32%), linear-gradient(135deg, #fff4f5 0%, #fce0e7 48%, #f8c5d2 100%);
             min-height: 100vh;
             font-family: 'Playfair Display', serif;
-            color: #f5e6d3;
+            color: #5b2738;
             overflow-x: hidden;
             position: relative;
         }
@@ -28,7 +28,7 @@
         .particle {
             position: absolute;
             width: 4px; height: 4px;
-            background: rgba(212, 175, 55, 0.6);
+            background: rgba(173, 61, 94, 0.38);
             border-radius: 50%;
             animation: float 15s infinite;
         }
@@ -43,7 +43,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 30px;
+            padding: 42px 30px 80px;
             position: relative;
             z-index: 10;
         }
@@ -51,7 +51,7 @@
         /* Royal seal */
         .seal {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
             animation: sealDrop 1.5s ease-out;
         }
         @keyframes sealDrop {
@@ -59,7 +59,7 @@
             100% { transform: translateY(0); opacity: 1; }
         }
         .seal-ring {
-            font-size: 60px;
+            font-size: 48px;
             display: inline-block;
             animation: pulse 2s infinite;
         }
@@ -70,8 +70,8 @@
         .seal-text {
             font-family: 'Cinzel', serif;
             font-size: 14px;
-            letter-spacing: 8px;
-            color: #d4af37;
+            letter-spacing: 5px;
+            color: #9c3e5a;
             margin-top: 10px;
             text-transform: uppercase;
         }
@@ -231,6 +231,52 @@
             .letter .salutation { font-size: 26px; }
         }
 
+        .letter-shell {
+            background: rgba(255, 250, 250, 0.54);
+            border: 1px solid rgba(255, 255, 255, 0.78);
+            border-radius: 24px;
+            box-shadow: 0 24px 70px rgba(117, 38, 66, 0.15);
+            padding: 42px clamp(22px, 6vw, 70px) 50px;
+        }
+        .letter .vow {
+            background: rgba(255, 255, 255, 0.56);
+            border-left-color: #c65a78;
+            box-shadow: 0 8px 22px rgba(157, 49, 85, 0.06);
+        }
+        .surprise {
+            text-align: center;
+            margin-top: 46px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(166, 70, 99, 0.22);
+        }
+        .surprise-button {
+            border: 0;
+            border-radius: 999px;
+            background: #9d3155;
+            color: #fff8fa;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            padding: 14px 22px;
+            box-shadow: 0 10px 24px rgba(157, 49, 85, 0.2);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .surprise-button:hover, .surprise-button:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px rgba(157, 49, 85, 0.3);
+        }
+        .surprise-note {
+            display: none;
+            color: #7d3d54;
+            font-family: 'Great Vibes', cursive;
+            font-size: 30px;
+            line-height: 1.35;
+            margin: 24px auto 0;
+            max-width: 500px;
+        }
+        .surprise-note.visible { display: block; animation: fadeInUp .8s ease-out both; }
+
         /* Entry overlay */
         .entry-overlay {
             position: fixed;
@@ -281,11 +327,11 @@
 </head>
 <body>
     <!-- Entry Overlay -->
-    <div class="entry-overlay" id="entryOverlay" onclick="enterLetter()">
+    <div class="entry-overlay" id="entryOverlay">
         <div class="crown">👑</div>
         <h2>A Royal Decree</h2>
-        <div style="font-family: 'Great Vibes', cursive; font-size: 28px; color: #c9b896;">For MrsP, My Queen</div>
-        <div class="tap-hint">Tap anywhere to open</div>
+        <div style="font-family: 'Great Vibes', cursive; font-size: 28px; color: #7b4a5b;">For MrsP, My Love</div>
+        <button class="surprise-button" type="button" onclick="enterLetter()">Open your letter</button>
     </div>
 
     <!-- Floating particles -->
@@ -305,7 +351,7 @@
         <div class="header">
             <h1>My Queen, MrsP</h1>
             <div class="subtitle">Vows of Eternal Devotion</div>
-            <div class="date">September 2026 &mdash; From Dubai to Kenya</div>
+            <div class="date">September 8 2026</div>
         </div>
 
         <div class="divider">
@@ -315,7 +361,7 @@
         </div>
 
         <!-- Letter -->
-        <div class="letter" id="letter">
+        <div class="letter letter-shell" id="letter">
             <p class="salutation">My Queen,</p>
 
             <p>Before you, I thought love was something you chased. Something you doubted. A fire that burned hot one day and turned cold the next. I thought it was complicated &mdash; a game of waiting and wondering.</p>
@@ -365,6 +411,11 @@
             <p>MrsP, if you ever wonder what kind of love I want to give you, it is the kind that doesn't just say "I love you," but spends a lifetime learning what those words mean to you.</p>
 
             <p style="text-align: center; font-family: 'Great Vibes', cursive; font-size: 28px; color: #d4af37; margin-top: 40px;">You are mine forever.<br>And I am yours.<br>Forever.</p>
+
+            <div class="surprise">
+                <button class="surprise-button" id="surpriseButton" type="button">There is one more thing</button>
+                <p class="surprise-note" id="surpriseNote">No matter how many times I choose you, it will never feel like enough.</p>
+            </div>
         </div>
 
         <div class="divider">
@@ -375,7 +426,7 @@
 
         <div class="closing">
             <div style="font-size: 14px; color: #8a7a5a; letter-spacing: 3px; font-family: Cinzel, serif;">Yours, Always</div>
-            <div class="signature">Your King</div>
+            <div class="signature">Your Love Peter Mutwiri</div>
             <div class="title">Sovereign of Your Heart</div>
         </div>
     </div>
@@ -413,13 +464,18 @@
 
         // Reveal paragraphs one by one
         function revealParagraphs() {
-            const paragraphs = document.querySelectorAll('#letter p, #letter .vow');
+            const paragraphs = document.querySelectorAll('#letter > p:not(.surprise-note), #letter .vow');
             paragraphs.forEach((p, i) => {
                 setTimeout(() => {
                     p.classList.add('visible');
                 }, i * 600);
             });
         }
+
+        document.getElementById('surpriseButton').addEventListener('click', function () {
+            document.getElementById('surpriseNote').classList.add('visible');
+            this.style.display = 'none';
+        });
     </script>
 </body>
 </html>
