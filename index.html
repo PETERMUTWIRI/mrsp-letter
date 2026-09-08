@@ -79,29 +79,29 @@
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 28px;
             opacity: 0;
             animation: fadeInUp 1.5s ease-out 0.5s forwards;
         }
         .header h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
-            color: #d4af37;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            color: #9d3155;
+            text-shadow: 0 8px 24px rgba(157, 49, 85, 0.18);
             margin-bottom: 10px;
         }
         .header .subtitle {
             font-family: 'Cinzel', serif;
             font-size: 13px;
             letter-spacing: 6px;
-            color: #c9b896;
+            color: #7b4a5b;
             text-transform: uppercase;
         }
         .header .date {
             font-family: 'Cinzel', serif;
             font-size: 12px;
             letter-spacing: 4px;
-            color: #8a7a5a;
+            color: #a26b7d;
             margin-top: 15px;
         }
 
@@ -129,7 +129,7 @@
         .letter {
             font-size: 17px;
             line-height: 2;
-            color: #e8dcc8;
+            color: #633344;
             text-align: justify;
         }
         .letter p {
@@ -143,11 +143,11 @@
         .letter .salutation {
             font-family: 'Great Vibes', cursive;
             font-size: 32px;
-            color: #d4af37;
+            color: #a83e60;
             margin-bottom: 30px;
         }
         .letter .highlight {
-            color: #d4af37;
+            color: #a83e60;
             font-style: italic;
         }
         .letter .vow {
@@ -159,7 +159,7 @@
             font-style: italic;
         }
         .letter .vow strong {
-            color: #d4af37;
+            color: #9d3155;
             font-family: 'Cinzel', serif;
             font-style: normal;
             font-size: 14px;
@@ -177,14 +177,14 @@
         .closing .signature {
             font-family: 'Great Vibes', cursive;
             font-size: 42px;
-            color: #d4af37;
+            color: #a83e60;
             margin-top: 20px;
         }
         .closing .title {
             font-family: 'Cinzel', serif;
             font-size: 12px;
             letter-spacing: 4px;
-            color: #8a7a5a;
+            color: #a26b7d;
             text-transform: uppercase;
             margin-top: 10px;
         }
@@ -203,7 +203,7 @@
         .heart {
             position: absolute;
             bottom: -20px;
-            color: rgba(212, 175, 55, 0.3);
+            color: rgba(168, 62, 96, 0.24);
             font-size: 20px;
             animation: rise 8s infinite ease-in;
         }
@@ -277,12 +277,66 @@
         }
         .surprise-note.visible { display: block; animation: fadeInUp .8s ease-out both; }
 
+        .distance-note {
+            align-items: center;
+            background: rgba(255, 255, 255, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(117, 38, 66, 0.08);
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 0 auto 34px;
+            max-width: 560px;
+            padding: 18px 22px;
+            text-align: center;
+        }
+        .distance-place {
+            color: #7d3d54;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .distance-heart {
+            color: #b03f62;
+            font-size: 22px;
+            animation: pulse 2.4s infinite;
+        }
+        .distance-caption {
+            color: #a26b7d;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .photo-moment {
+            margin: 0 auto 38px;
+            max-width: 430px;
+            text-align: center;
+        }
+        .photo-moment img {
+            background: #fffafa;
+            border: 8px solid rgba(255, 250, 250, 0.86);
+            border-radius: 18px;
+            box-shadow: 0 18px 42px rgba(117, 38, 66, 0.2);
+            display: block;
+            height: auto;
+            max-width: 100%;
+            transform: rotate(-1.2deg);
+        }
+        .photo-caption {
+            color: #7d3d54;
+            font-family: 'Great Vibes', cursive;
+            font-size: 25px;
+            margin-top: 16px;
+        }
+
         /* Entry overlay */
         .entry-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: #0d0d1a;
+            background: radial-gradient(circle at 50% 38%, rgba(255,255,255,.82), transparent 24%), linear-gradient(145deg, #f7c3d1, #fff4f5 55%, #f4b4c6);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -298,7 +352,7 @@
             font-family: 'Cinzel', serif;
             font-size: 14px;
             letter-spacing: 8px;
-            color: #d4af37;
+            color: #9d3155;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
@@ -315,7 +369,7 @@
             font-family: 'Cinzel', serif;
             font-size: 11px;
             letter-spacing: 4px;
-            color: #5a5a6a;
+            color: #9c6879;
             margin-top: 40px;
             animation: blink 2s infinite;
         }
@@ -353,6 +407,23 @@
             <div class="subtitle">Vows of Eternal Devotion</div>
             <div class="date">September 8 2026</div>
         </div>
+
+        <div class="distance-note">
+            <div>
+                <div class="distance-place">Dubai</div>
+                <div class="distance-caption">where I am</div>
+            </div>
+            <div class="distance-heart">♥</div>
+            <div>
+                <div class="distance-place">Kenya</div>
+                <div class="distance-caption">where my heart is</div>
+            </div>
+        </div>
+
+        <figure class="photo-moment">
+            <img src="file_00000000e76481f494ae495b237ee4cf.png" alt="Peter and MrsP together beside a beautiful lake">
+            <figcaption class="photo-caption">The face my heart chose.</figcaption>
+        </figure>
 
         <div class="divider">
             <div class="divider-line"></div>
@@ -410,7 +481,7 @@
 
             <p>MrsP, if you ever wonder what kind of love I want to give you, it is the kind that doesn't just say "I love you," but spends a lifetime learning what those words mean to you.</p>
 
-            <p style="text-align: center; font-family: 'Great Vibes', cursive; font-size: 28px; color: #d4af37; margin-top: 40px;">You are mine forever.<br>And I am yours.<br>Forever.</p>
+            <p style="text-align: center; font-family: 'Great Vibes', cursive; font-size: 28px; color: #a83e60; margin-top: 40px;">You are mine forever.<br>And I am yours.<br>Forever.</p>
 
             <div class="surprise">
                 <button class="surprise-button" id="surpriseButton" type="button">There is one more thing</button>
@@ -425,7 +496,7 @@
         </div>
 
         <div class="closing">
-            <div style="font-size: 14px; color: #8a7a5a; letter-spacing: 3px; font-family: Cinzel, serif;">Yours, Always</div>
+            <div style="font-size: 14px; color: #a26b7d; letter-spacing: 3px; font-family: Cinzel, serif;">Yours, Always</div>
             <div class="signature">Your Love Peter Mutwiri</div>
             <div class="title">Sovereign of Your Heart</div>
         </div>
