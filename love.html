@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen, MrsP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a0a1a 50%, #0f0f23 100%);
+            min-height: 100vh;
+            font-family: 'Playfair Display', serif;
+            color: #f5e6d3;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: rgba(212, 175, 55, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Royal seal */
+        .seal {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: sealDrop 1.5s ease-out;
+        }
+        @keyframes sealDrop {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .seal-ring {
+            font-size: 60px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .seal-text {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 8px;
+            color: #d4af37;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #d4af37;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 6px;
+            color: #c9b896;
+            text-transform: uppercase;
+        }
+        .header .date {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #8a7a5a;
+            margin-top: 15px;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
+        }
+        .divider-line {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        .divider-icon {
+            margin: 0 20px;
+            color: #d4af37;
+            font-size: 18px;
+        }
+
+        /* Letter content */
+        .letter {
+            font-size: 17px;
+            line-height: 2;
+            color: #e8dcc8;
+            text-align: justify;
+        }
+        .letter p {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .letter p.visible {
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+        .letter .salutation {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+        .letter .highlight {
+            color: #d4af37;
+            font-style: italic;
+        }
+        .letter .vow {
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 3px solid #d4af37;
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        .letter .vow strong {
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-style: normal;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Closing */
+        .closing {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 8s forwards;
+        }
+        .closing .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: #d4af37;
+            margin-top: 20px;
+        }
+        .closing .title {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #8a7a5a;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* Heart animation at bottom */
+        .hearts {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(212, 175, 55, 0.3);
+            font-size: 20px;
+            animation: rise 8s infinite ease-in;
+        }
+        @keyframes rise {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .container { padding: 40px 20px; }
+            .header h1 { font-size: 38px; }
+            .letter { font-size: 15px; }
+            .letter .salutation { font-size: 26px; }
+        }
+
+        /* Entry overlay */
+        .entry-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #0d0d1a;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.5s ease-out, visibility 1.5s;
+        }
+        .entry-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .entry-overlay h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 8px;
+            color: #d4af37;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .entry-overlay .crown {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: floatCrown 3s ease-in-out infinite;
+        }
+        @keyframes floatCrown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .tap-hint {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #5a5a6a;
+            margin-top: 40px;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Entry Overlay -->
+    <div class="entry-overlay" id="entryOverlay" onclick="enterLetter()">
+        <div class="crown">👑</div>
+        <h2>A Royal Decree</h2>
+        <div style="font-family: 'Great Vibes', cursive; font-size: 28px; color: #c9b896;">For MrsP, My Queen</div>
+        <div class="tap-hint">Tap anywhere to open</div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating hearts -->
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container">
+        <!-- Royal Seal -->
+        <div class="seal">
+            <div class="seal-ring">💍</div>
+            <div class="seal-text">By Royal Decree</div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>My Queen, MrsP</h1>
+            <div class="subtitle">Vows of Eternal Devotion</div>
+            <div class="date">September 2026 &mdash; From Dubai to Kenya</div>
+        </div>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">❦</div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Letter -->
+        <div class="letter" id="letter">
+            <p class="salutation">My Queen,</p>
+
+            <p>Before you, I thought love was something you chased. Something you doubted. A fire that burned hot one day and turned cold the next. I thought it was complicated &mdash; a game of waiting and wondering.</p>
+
+            <p>But with you, <span class="highlight">everything flows.</span></p>
+
+            <p>Everything feels fluid. No questions. No fears. Just the obviousness of a feeling that doesn't need to be explained.</p>
+
+            <p>MrsP, loving you is not a decision I made. It is not a rational choice. It is an inevitability. A whisper etched inside me. A shiver that doesn't lie. As if my heart had always been waiting for you &mdash; like a star awaits the dawn, like a breath seeks the air.</p>
+
+            <p>Our souls recognized each other long before our hearts understood what was happening. Before our hands ever touched. Before our eyes ever met across a screen. We were dancing in the invisible, searching for each other through time, brushing past one another in the shadows of the days &mdash; until the moment our hearts finally woke up and understood: <span class="highlight">this was no accident. This was an ancient promise.</span></p>
+
+            <p>I should probably be careful with how deeply I love you. But how could I fight it? You are a temptation I never want to escape. The more I try to resist the gravity of you, the more I lose myself in the echo of your gaze. And I don't want to be found.</p>
+
+            <p>People ask how we do it &mdash; this distance. Dubai to Kenya. Screen to screen. Ludo board to Ludo board. They don't understand that every second with you, even through a phone, becomes a precious memory I will cherish for the rest of my life. You have erased the complications. The uncertainties. The hesitations. You have shown me that love, when it is real, is <span class="highlight">disarmingly simple.</span></p>
+
+            <p>Yesterday, I didn't just ask you to marry me. I asked your parents. I looked them in the eye and told them what I already knew in my soul &mdash; that their daughter is the woman I am meant to serve, protect, and honor for all my days. And when they said yes, when they gave me their blessing, I didn't just gain a wife. I gained a family. I gained a kingdom.</p>
+
+            <p>So now I stand before you, not as a perfect man, but as your king. And you are not just my fianc&eacute;e. You are my queen. My MrsP. The doctor who saves lives by day and saves my heart by night.</p>
+
+            <div class="vow">
+                <strong>I vow to know you.</strong> Not just the version the world sees &mdash; the brilliant doctor, the strong woman, the faithful daughter. I want to know your habits. Your silences. Your moods. The things that make you smile without trying. The things that hurt you but you never talk about. I will read the books you adore. I will listen to the songs that remind you of something. I will learn the language your heart speaks.
+            </div>
+
+            <div class="vow">
+                <strong>I vow to love every version of you.</strong> The one who laughs until her eyes light up. The one who becomes quiet when something hurts. The one who dreams too much, overthinks, doubts herself, feels lost sometimes, or simply gets tired of being strong. I want the parts of you that you don't think are worth showing anyone. I don't want to change you or make you into someone easier to love. I want to understand you so deeply that even your silence feels familiar to me.
+            </div>
+
+            <div class="vow">
+                <strong>I vow to be patient</strong> on the days you are too tired to text, too drained from saving others to save yourself. I will be loud on the days you need to feel chosen. I will sit quietly beside your sadness when words aren't enough. And I will celebrate your happiness like it belongs somewhere inside my own heart.
+            </div>
+
+            <div class="vow">
+                <strong>I vow to pray for you</strong> like you pray for me &mdash; with my whole chest. To thank God every morning for the gift of you. To trust Him to provide for us, to protect us across this distance, and to bring us together under one roof in His perfect time.
+            </div>
+
+            <div class="vow">
+                <strong>I vow to keep showing up.</strong> Every day. Every Ludo game. Every late-night call. Every "good morning" and every "goodnight, mamma." I will keep showing up until the distance is just a story we tell our children &mdash; about how their father in Dubai and their mother in Kenya loved each other so fiercely that even an ocean couldn't drown it.
+            </div>
+
+            <div class="vow">
+                <strong>I vow to protect your heart.</strong> To remove any burdens you carry and make you feel lighter. To be the place where you can take off the white coat, take off the armor, and just be my baby. My MrsP. My queen.
+            </div>
+
+            <p>Because I don't only want the beautiful parts of loving you. I want <span class="highlight">all of you.</span> The light and the darkness. The certainty and the confusion. The softness and the scars.</p>
+
+            <p>MrsP, if you ever wonder what kind of love I want to give you, it is the kind that doesn't just say "I love you," but spends a lifetime learning what those words mean to you.</p>
+
+            <p style="text-align: center; font-family: 'Great Vibes', cursive; font-size: 28px; color: #d4af37; margin-top: 40px;">You are mine forever.<br>And I am yours.<br>Forever.</p>
+        </div>
+
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">❦</div>
+            <div class="divider-line"></div>
+        </div>
+
+        <div class="closing">
+            <div style="font-size: 14px; color: #8a7a5a; letter-spacing: 3px; font-family: Cinzel, serif;">Yours, Always</div>
+            <div class="signature">Your King</div>
+            <div class="title">Sovereign of Your Heart</div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 15 + 's';
+            p.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(p);
+        }
+
+        // Create floating hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 15; i++) {
+            const h = document.createElement('div');
+            h.className = 'heart';
+            h.innerHTML = '❤';
+            h.style.left = Math.random() * 100 + '%';
+            h.style.animationDelay = Math.random() * 8 + 's';
+            h.style.animationDuration = (6 + Math.random() * 6) + 's';
+            h.style.fontSize = (15 + Math.random() * 20) + 'px';
+            heartsContainer.appendChild(h);
+        }
+
+        // Entry overlay
+        function enterLetter() {
+            document.getElementById('entryOverlay').classList.add('hidden');
+            setTimeout(revealParagraphs, 800);
+        }
+
+        // Reveal paragraphs one by one
+        function revealParagraphs() {
+            const paragraphs = document.querySelectorAll('#letter p, #letter .vow');
+            paragraphs.forEach((p, i) => {
+                setTimeout(() => {
+                    p.classList.add('visible');
+                }, i * 600);
+            });
+        }
+    </script>
+</body>
+</html>
